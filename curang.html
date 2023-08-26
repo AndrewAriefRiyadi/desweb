@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  /* Gaya umum untuk semua ukuran layar */
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: -10px; /* Mengkompensasi padding anak-anak */
+  }
+
+  .col {
+    flex: 50%; /* Setiap kolom mengambil 50% lebar row pada awalnya */
+    padding: 10px;
+    box-sizing: border-box; /* Padding tidak akan mempengaruhi lebar kolom */
+  }
+
+  /* Media query untuk layar sempit (mobile) */
+  @media (max-width: 768px) {
+    .col {
+      flex: 100%; /* Setiap kolom mengambil 100% lebar row */
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="row">
+  <div class="col" style="background-color: #f2f2f2;">
+    <h2>Kolom 1</h2>
+    <p>Isi dari kolom 1.</p>
+  </div>
+  <div class="col" style="background-color: #ddd;">
+    <h2>Kolom 2</h2>
+    <p>Isi dari kolom 2.</p>
+  </div>
+</div>
+
+</body>
+</html>
