@@ -3,29 +3,52 @@
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script>
-            function hitung(){
-                let angka_1 = parseInt(document.getElementById("no_1").value)
-                let angka_2 = parseInt(document.getElementById("no_2").value)
-                let operasi = getOperasi()
-                let hasil = null
-                if (operasi == "+"){
-                    hasil = angka_1 + angka_2 
-                }
-                else if (operasi == "-"){
-                    hasil = angka_1 - angka_2
-                }
-                else if (operasi == "*"){
-                    hasil = angka_1 * angka_2
-                }
-                else if (operasi == ":"){
-                    hasil = angka_1 / angka_2
-                }
-                document.getElementById("hasil").innerHTML = hasil
+        let did_math = false;
+        function appendToDisplay(value) {
+            if (did_math == true){
+                clearAll();
+                did_math = false;
             }
+            document.getElementById("display").value += value;
+        }
 
-            function getOperasi(){
-                return document.getElementById("operasi").value
+        function appendToDisplayOperation(value) {
+            if (document.getElementById("display").value == ""){
+                return
             }
+            appendToDisplay(value);
+            document.getElementById("last_operation").innerHTML += document.getElementById("display").value;
+            clearDisplay();
+        }
+
+        function clearDisplay() {
+            document.getElementById("display").value = "";
+        }
+
+        function clearAll(){
+            clearDisplay();
+            document.getElementById("last_operation").innerHTML = "";
+
+        }
+
+        function deleteLastInput() {
+            var display = document.getElementById("display");
+            display.value = display.value.slice(0, -1);
+        }
+
+        function calculate() {
+            if (document.getElementById("display").value == ""){
+                return
+            }
+            document.getElementById("last_operation").innerHTML += document.getElementById("display").value
+            try {
+                const result = eval(document.getElementById("last_operation").innerHTML);
+                document.getElementById("display").value = result;
+                did_math = true;
+            } catch (error) {
+                document.getElementById("display").value = "Error: " + error.message;
+            }
+        }
         </script>
         <style>
             body {
@@ -36,17 +59,22 @@
         .calculator {
             width: 300px;
             margin: 0 auto;
+            margin-top: 10%;
             padding: 20px;
             background-color: #fff;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
         }
         
-        .calculator h2 {
-            text-align: center;
+        .calculator h3 {
+            text-align: left;
+        }
+
+        .calculator h4 {
+            text-align: right;
         }
         
         .calculator input[type="text"] {
-            width: 100%;
+            width: 93%;
             padding: 10px;
             margin-bottom: 10px;
             font-size: 20px;
@@ -68,35 +96,56 @@
             border-radius: 5px;
             cursor: pointer;
         }
-        
+        .calculator .buttons  button.kosong  {
+            background-color: #fff;
+            cursor: default;
+        }
+        .calculator .buttons  button.kosong:hover  {
+            background-color: #fff;
+        }
+        .calculator .buttons  button.sama_dengan  {
+            background-color: #98c7dd;
+        }
+
+        .calculator .buttons  button.sama_dengan:hover  {
+            background-color: #b5cdd8;
+        }
+
         .calculator .buttons button:hover {
             background-color: #f4f4f4;
         }
+
+        
         </style>
     </head>
     <body>
         <div class="calculator">
-            <h2>Kalkulator Sederhana</h2>
+            <h3> Standard </h3>
+            <h4 id="last_operation"></h4>
             <input type="text" id="display" readonly>
             <div class="buttons">
+                <button onclick="clearDisplay()">CE</button>
+                <button onclick="clearAll()">C</button>
+                <button onclick="appendToDisplay('**')">&#x005E;</button>
+                <button onclick="deleteLastInput()">&#8592;</button>
                 <button onclick="appendToDisplay('1')">1</button>
                 <button onclick="appendToDisplay('2')">2</button>
                 <button onclick="appendToDisplay('3')">3</button>
-                <button onclick="appendToDisplay('+')">+</button>
+                <button onclick="appendToDisplayOperation('+')">+</button>
                 <button onclick="appendToDisplay('4')">4</button>
                 <button onclick="appendToDisplay('5')">5</button>
                 <button onclick="appendToDisplay('6')">6</button>
-                <button onclick="appendToDisplay('-')">-</button>
+                <button onclick="appendToDisplayOperation('-')">-</button>
                 <button onclick="appendToDisplay('7')">7</button>
                 <button onclick="appendToDisplay('8')">8</button>
                 <button onclick="appendToDisplay('9')">9</button>
-                <button onclick="appendToDisplay('*')">*</button>
+                <button onclick="appendToDisplayOperation('*')">*</button>
+                <button onclick="appendToDisplay('.')">.</button>
                 <button onclick="appendToDisplay('0')">0</button>
-                <button onclick="clearDisplay()">C</button>
-                <button onclick="calculate()">=</button>
-                <button onclick="appendToDisplay('/')">/</button>
+                <button onclick="appendToDisplayOperation('/')">/</button>
+                <button onclick="calculate()" class="sama_dengan">=</button>
+                
             </div>
         </div>
-
     </body>
 </html>
