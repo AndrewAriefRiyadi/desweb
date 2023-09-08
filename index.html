@@ -61,6 +61,16 @@ li a:hover {
     }
   }
 </style>
+<script>
+  function demo_change_content(){
+    if (document.getElementById("demo").innerHTML == "Paragraph Changed"){
+      document.getElementById("demo").innerHTML = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum ante. Morbi tempor mi velit, cursus tristique purus convallis sed. Cras imperdiet purus nec fringilla eleifend. Nulla sit amet faucibus ipsum. Curabitur dui nibh, vehicula at metus sit amet, consectetur iaculis massa. Duis a magna ac urna ultrices iaculis eu ac lectus. Cras sollicitudin sed erat eleifend dapibus. Nunc neque enim, rhoncus eget suscipit a, ullamcorper vel risus. Curabitur at mi ac lectus iaculis pellentesque et eu purus. Nunc ac pellentesque lectus. Maecenas porttitor ullamcorper erat sit amet lacinia. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas."
+    }
+    else {
+      document.getElementById("demo").innerHTML = "Paragraph Changed"
+    }
+  }
+</script>
 </head>
 <body>
   <div class="header">
@@ -75,8 +85,8 @@ li a:hover {
   <div class="row">
     <div class="column">
       <h1> Berita 1</h1>
-      <p1> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum ante. Morbi tempor mi velit, cursus tristique purus convallis sed. Cras imperdiet purus nec fringilla eleifend. Nulla sit amet faucibus ipsum. Curabitur dui nibh, vehicula at metus sit amet, consectetur iaculis massa. Duis a magna ac urna ultrices iaculis eu ac lectus. Cras sollicitudin sed erat eleifend dapibus. Nunc neque enim, rhoncus eget suscipit a, ullamcorper vel risus. Curabitur at mi ac lectus iaculis pellentesque et eu purus. Nunc ac pellentesque lectus. Maecenas porttitor ullamcorper erat sit amet lacinia. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p1>
-
+      <p1 id="demo"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent sed fermentum ante. Morbi tempor mi velit, cursus tristique purus convallis sed. Cras imperdiet purus nec fringilla eleifend. Nulla sit amet faucibus ipsum. Curabitur dui nibh, vehicula at metus sit amet, consectetur iaculis massa. Duis a magna ac urna ultrices iaculis eu ac lectus. Cras sollicitudin sed erat eleifend dapibus. Nunc neque enim, rhoncus eget suscipit a, ullamcorper vel risus. Curabitur at mi ac lectus iaculis pellentesque et eu purus. Nunc ac pellentesque lectus. Maecenas porttitor ullamcorper erat sit amet lacinia. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p1>
+      <button type="button" onclick="demo_change_content()"> COBA </button>
     </div>
     <div class="column">
       <h1> Agenda 1</h1>

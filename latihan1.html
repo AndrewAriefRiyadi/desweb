@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function hitung(){
+                let angka_1 = parseInt(document.getElementById("no_1").value)
+                let angka_2 = parseInt(document.getElementById("no_2").value)
+                let operasi = getOperasi()
+                let hasil = null
+                if (operasi == "+"){
+                    hasil = angka_1 + angka_2 
+                }
+                else if (operasi == "-"){
+                    hasil = angka_1 - angka_2
+                }
+                else if (operasi == "*"){
+                    hasil = angka_1 * angka_2
+                }
+                else if (operasi == ":"){
+                    hasil = angka_1 / angka_2
+                }
+                document.getElementById("hasil").innerHTML = hasil
+            }
+
+            function getOperasi(){
+                return document.getElementById("operasi").value
+            }
+        </script>
+    </head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <body>
+        <input type="number"  id="no_1"> 
+        <select id="operasi" onclick="hitung()">
+            <option value="+">+</option>
+            <option value="-">-</option>
+            <option value="*">*</option>
+            <option value=":">:</option>
+        </select> 
+        <input type="number" id="no_2"> 
+        <button id="button_hasil" onclick="hitung()">=</button> 
+        <p id="hasil">0</p>
+
+    </body>
+</html>
